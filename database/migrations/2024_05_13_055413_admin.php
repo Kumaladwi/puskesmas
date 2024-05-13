@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('puskesmas', function (Blueprint $table) {
+        Schema::create('admin', function(Blueprint $table){
             $table->id();
-            $table->timestamps();
+            $table->string('nama_admin');
+            $table->string('keterangan');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('user');
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('puskesmas');
+        //
     }
 };
